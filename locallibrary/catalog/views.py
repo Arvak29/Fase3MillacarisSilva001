@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Genre, Plataform, Developer, User, Game, GameInstance
+from . models import Genre, Plataform, Developer, Game, GameInstance
 from django.views import generic
 
 #informacion para formularios
@@ -11,6 +11,9 @@ from django.conf.urls import url
 from django.shortcuts import render, get_object_or_404
 from django.conf import settings
 from django.conf.urls.static import static
+
+#Forms
+from .forms import GameForm
 
 # Create your views here.
 def index(request):
@@ -38,24 +41,17 @@ def PlaystationStore(request):
         context={'Num_Games': num_Games, 'Num_Instances': num_Instances, 'num_instances_available':num_instances_available, 'Num_Developer': num_Developer},
     )
 
+def Add_game(request):
+    
+    data = {
+        'form': GameForm()
+    }
 
-#User CRUD
-
-class UserCreate(CreateView):
-    model = User
-    fields = ['username', 'password', 'birth_date', 'email']
-    initial ={'birth_date': '31/10/2020'}
-
-class UserUpdate(UpdateView):
-    model = User
-    fields = ['username', 'password', 'birth_date', 'email']
-
-class UserDelete(DeleteView):
-    model = User
-
-class UserDetailView(generic.DetailView):
-    model = User
-
+    return render(
+        request,
+        'add_game.html',
+        data,
+    )
 
 
 #StoreView
@@ -66,9 +62,10 @@ class PlataformGameView(generic.DetailView):
     
 #Game CRUD
 
-'''class GameCreate(CreateView):
+class GameCreate(CreateView):
     model = Game
-    fields = ['title', 'developer', 'description', 'genre', 'plataform', 'players', 'price']
+    fields = ['title', 'developer', 'description', 'genre', 'plataform', 'players', 'price', 'img']
+    template_name = 'add_game.html'
 
 class GameUpdate(UpdateView):
     model = Game
@@ -79,4 +76,3 @@ class GameDelete(DeleteView):
 
 class GameDetailView(generic.DetailView):
     model = Game
-'''

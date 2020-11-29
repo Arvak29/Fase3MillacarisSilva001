@@ -70,48 +70,85 @@
                   </span>
                   {% endblock %}
                 </div>
-
-                <!--  MODAL -->
-                <div class="navbar-nav ml-auto" id="login_container">
-                  {% block modal %}
-                    <a class="navbar-brand" id="login" onclick="openModal()" style="width:auto;">
-                        <img src="{% static 'img/icons/person-icon.png' %}" width="30" alt=""> 
-                        <p class="sign_in" id="login">Log in</p>
-
-                    </a>
-                    <div id="id01" class="modal">
+            {% block modal %}
+            {% if user.is_authenticated %}
+            <!--  MODAL -->
+            <div class="navbar-nav ml-auto" id="login_container">
               
-                      <form class="modal-content animate" action="index.html" method="post">
-                        <div class="imgcontainer">
-                          <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
-                          <img src="{% static 'img/Espeon_pixel.png' %}" alt="Avatar" class="avatar">
-                        </div>
-  
-                        <div class="container" id="modal_container">
-                          <div class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Enter  Username" name="uname" required>
+                <a class="navbar-brand" id="login" onclick="openModal()" style="width:auto;">
+                    <img src="{% static 'img/icons/person-icon.png' %}" width="30" alt=""> 
+                    <p class="sign_in" id="login">Profile</p>
+
+                </a>
+              <div id="id01" class="modal">
+          
+                  <form class="modal-content animate" action="/accounts/logout/" method="post">
+                    <div class="imgcontainer">
+                      <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
+                      <img src="{% static 'img/Espeon_pixel.png' %}" alt="Avatar" class="avatar">
+                    </div>
+
+                    <div class="container" id="modal_container">
+                      <div class="container">
+                        {% block form1 %}
+                        <form method="post">
+                          {% csrf_token %}
+                          <div class="col-md-12" id="modal_content">
+                              <div id="button_r">
+                                <button type="submit" class="btn">Logout</button>
+                              </div>
+                              <br>
+                            </form>
+                            {% endblock %}
+                            <span class="btn"><a href="/accounts/settings/" id="signUp">Settings</a></span>
                           </div>
-                          <div class="container">
-                            <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter  Password" name="psw" required>
-                          </div>
-                          <div class="container" id="modal_buttons">
-                            <button class="btn" type="submit" id="btn_login">Login</button>
-                            <span class="psw"><a href="/user/create/" id="signUp">Sign Up</a></span>
-                            <div class="form-check" id="remember">
-                              <input class="form-check" type="checkbox" checked="checked" name="remember">
-                              <p>Remember me</p>
+                      </div>
+                    </div>
+                    <script>closeModal2()</script>
+                  </form>
+                </div> 
+              </div>
+            </div>
+            {% else %}
+              <!--  MODAL -->
+              <div class="navbar-nav ml-auto" id="login_container">
+                  <a class="navbar-brand" id="login" onclick="openModal()" style="width:auto;">
+                      <img src="{% static 'img/icons/person-icon.png' %}" width="30" alt=""> 
+                      <p class="sign_in" id="login">Log in</p>
+
+                  </a>
+                <div id="id01" class="modal">
+            
+                    <form class="modal-content animate" action="/accounts/login/" method="post">
+                      <div class="imgcontainer">
+                        <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
+                        <img src="{% static 'img/Espeon_pixel.png' %}" alt="Avatar" class="avatar">
+                      </div>
+
+                      <div class="container" id="modal_container">
+                        <div class="container">
+                          {% block form2 %}
+                          <form method="post">
+                            {% csrf_token %}
+                            <div class="col-md-12" id="modal_content">
+                                <div id="button_r">
+                                  <button type="submit" class="btn">Login</button>
+                                </div>
+                                <br>
+                              </form>
+                              {% endblock %}
+                              <span class="btn"><a href="/accounts/signup/" id="signUp">Sign Up</a></span>
                             </div>
-                          </div>
                         </div>
-                        <script>closeModal2()</script>
-                      </form>
-                    </div> 
-                    {% endblock %}
+                      </div>
+                      <script>closeModal2()</script>
+                    </form>
+                  </div> 
                 </div>
               </div>
+            {% endif %}
         </nav>
+        {% endblock %}
     </header>
     {% block content %}
 

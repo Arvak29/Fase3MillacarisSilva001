@@ -8,14 +8,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',views.index,name='index'),
     path('Store/<int:pk>',views.PlataformGameView.as_view(),name='Store'),
-    path ('user/<int:pk>', views.UserDetailView.as_view(), name='user_detail'),
 ]
 
 urlpatterns+=[
-    path('user/create/', views.UserCreate.as_view(), name='user_create'),
-    path('user/<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
-    path('user/<int:pk>/delete/', views.UserDelete.as_view(success_url="/"), name='user_delete'),
-
+    #Game Views
+    path('game/<int:pk>',views.GameDetailView.as_view(),name='game_detail'),
+    path('add_game/',views.GameCreate.as_view(),name='add_game'),
+    path('game/<int:pk>/update/', views.GameUpdate.as_view(success_url="/"), name='game_update'),
+    path('game/<int:pk>/delete/', views.GameDelete.as_view(success_url="/Store/1"), name='game_delete'),
 ]
 
 if settings.DEBUG:

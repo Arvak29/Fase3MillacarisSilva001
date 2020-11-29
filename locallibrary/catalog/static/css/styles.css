@@ -355,7 +355,6 @@ h4{
     text-align: justify;
 }
 
-
 /*Login page*/
 
 
@@ -367,6 +366,12 @@ h4{
     box-shadow: 0 0 8px 1px #9c6ffc41,  /* inner*/
                 0 0 6px 1px #9c6ffc41, /* middle*/
                 0 0 8px 1px #9c6ffc41; /* outer*/
+}
+
+#canvas_re{
+    background-color: #0c0c0ce1;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #sign_up{
@@ -503,6 +508,22 @@ img.avatar {
     padding-bottom: 20px;
 }
 
+#modal_content{
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+#modal_content button{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#modal_content span{
+    margin-left: 25px;
+    margin-right: 25px;
+    min-width: 82px;
+}
+
 .container .login{
     padding-bottom: 100px;
 }
@@ -531,18 +552,6 @@ img.avatar {
     padding-top: 0;
 }
 
-#remember{
-    display: inline-flex;
-    /*align-items: center;*/   
-}
-
-#remember p{
-    margin-bottom: 0;
-    margin-left: 10px;
-    padding-top: 10px;
-    color: #1AFF00;
-}
-
 .container input::placeholder{
     color: #1aff003b;
 }
@@ -559,6 +568,11 @@ img.avatar {
     }
     .container .psw{
         padding-top: 5px;
+    }
+    #modal_content{
+        display: inline-flex;
+        justify-content: center;
+        margin-top: 10px;
     }
 }
 
@@ -655,4 +669,102 @@ img.avatar {
     font-size: 15px;
     margin-top: 0px;
     margin-bottom: 12px;
+}
+
+/*Fase 3*/
+
+#welcome{
+    color: whitesmoke;
+    text-align: center;
+    font-family: arcade;
+}
+
+#signuperror{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 15px;
+}
+
+.text_center{
+    text-align: center;
+}
+
+#img_center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#email input{
+    width: 100%;
+}
+
+#email{
+    text-align: center;
+}
+
+
+select{
+    background-color: transparent;
+    border-color: #9C6FFC;
+    border-radius: 4px;
+    color: #1AFF00;
+    width: 100%;
+}
+
+input{
+    width: 100%;
+}
+
+#id_plataform option{
+    color: black;
+}
+
+textarea{
+    background-color: transparent;
+    border-color: #9C6FFC;
+    border-radius: 4px;
+    color: #1AFF00;
+    height: 85px;
+    width: 100% !important;
+}
+
+#id_img.clearablefileinput{
+    color: #1AFF00 !important;
+}
+
+input #file-upload-button{
+    color: #1AFF00 !important;
+    background-color: #ffffff00 !important;
+    border-color: #1aff008c !important;
+    box-shadow: 0 0 8px 1px #9c6ffc41,  /* inner*/
+                0 0 6px 1px #9c6ffc41, /* middle*/
+                0 0 8px 1px #9c6ffc41; /* outer*/
+}
+
+.selectmultiple{
+    width: 100%;
+}
+
+#game_detail{
+    justify-content: center !important;
+    display: flex !important;
+}
+
+#game_detail .card{
+    max-width: 250px;
+    display: block;
+    justify-content: flex-start !important;
+}
+
+#add_game_container{
+    justify-content: center;
+    margin-bottom: 45px;
+}
+#label_addgame{
+    display: block !important;
+}
+
+#btn_addgame{
+    min-width: 45%;
 }

@@ -28,18 +28,6 @@ class Developer(models.Model):
     def __str__(self):
         return self.name
 
-class User(models.Model):
-    username = models.CharField(max_length=30)
-    password = models.CharField(max_length=30)
-    birth_date = models.DateField(null=True, blank=True)
-    email = models.EmailField(blank=True)
-
-    def get_absolute_url(self):
-        return reverse('user_detail', args=[str(self.id)])
-    
-    def __str__(self):
-        return f'{self.username} {self.email}'
-
 class Game(models.Model):
 
     title = models.CharField(max_length=100)
@@ -52,10 +40,10 @@ class Game(models.Model):
     img = models.ImageField(null=True, blank=True, upload_to ='covers')
 
     def __str__(self):
-        return self.title
+        return f'{self.title} {self.plataform}'
 
     def get_absolute_url(self):
-        return reverse('game-detail', args=[str(self.id)])
+        return reverse('game_detail', args=[str(self.id)])
 
 class GameInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular game across the whole catalog')

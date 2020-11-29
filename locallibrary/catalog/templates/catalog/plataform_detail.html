@@ -22,6 +22,14 @@
     </div>
     <div class="container">
       <h1>{{ plataform.name }}</h1>
+      {% if request.user.is_superuser %}
+      <div class="container col-12">
+        <div class="row" id="add_game_container">
+          <a class="btn" href="/add_game/">Add New Game</a>
+        </div>
+      </div>
+      {% else %}
+      {% endif %}
     </div>
     <div class="container col-md-11">
 
@@ -32,7 +40,11 @@
             <div class="card text-center">
               <div class="card-body">
                 
-                <img id="card" src="{{game.img.url}}" alt="">
+
+
+                <a href="/game/{{game.id}}">
+                  <img id="card" src="{{game.img.url}}" alt="">
+                </a>
                 
                 
                 <h4 class="card-title">{{ game.title| truncatechars:20 | safe }}</h4>
